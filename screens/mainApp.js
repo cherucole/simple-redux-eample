@@ -7,9 +7,9 @@ import { increaseCounter, decreaseCounter } from "../store/actions";
 const MainApp = props => {
   return (
     <View style={styles.container}>
-      <Button title="Increase" onPress={props.increase} />
+      <Button title="Increase" onPress={props.increaseCounter} />
       <Text>{props.counter}</Text>
-      <Button title="Decrease" onPress={props.decrease} />
+      <Button title="Decrease" onPress={props.decreaseCounter} />
     </View>
   );
 };
@@ -17,13 +17,6 @@ const MainApp = props => {
 const mapStateToProps = state => {
   return {
     counter: state.counter
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    increase: () => dispatch({ type: "INCREMENT" }),
-    decrease: () => dispatch({ type: "DECREMENT" })
   };
 };
 
@@ -35,4 +28,6 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainApp);
+export default connect(mapStateToProps, { increaseCounter, decreaseCounter })(
+  MainApp
+);
