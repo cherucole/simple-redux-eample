@@ -1,32 +1,38 @@
-import React ,{useState}from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import React, { useState } from "react";
+import { Text, View, StyleSheet, Button } from "react-native";
+import { connect } from "react-redux";
 
-const MainApp = props =>{
-    const [counter, setCounter] = useState(0)
+import { increaseCounter, decreaseCounter } from "../store/actions";
 
-    const increment = () =>{
-        setCounter(counter+1)
-    }
-    const decrement = () =>{
-        setCounter(counter - 1)
-    }
-    return(
-        <View style={styles.container}>
-            <Button title='Increase' onPress={increment}/>
-            <Text>{counter}</Text>
-            <Button title='Decrease' onPress={decrement}/>
-        </View>
-    )
-}
+const MainApp = props => {
+  return (
+    <View style={styles.container}>
+      <Button title="Increase" onPress={props.increase} />
+      <Text>{props.counter}</Text>
+      <Button title="Decrease" onPress={props.decrease} />
+    </View>
+  );
+};
 
-const styles= StyleSheet.create({
-    container:{
-        flex:1,
-        justifyContent:'center',
-        alignItems:'center'
+const mapStateToProps = state => {
+  return {
+    counter: state.counter
+  };
+};
 
-    }
-})
+const mapDispatchToProps = dispatch => {
+  return {
+    increase: () => dispatch({ type: "INCREMENT" }),
+    decrease: () => dispatch({ type: "DECREMENT" })
+  };
+};
 
-export default MainApp;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  }
+});
 
+export default connect(mapStateToProps, mapDispatchToProps)(MainApp);

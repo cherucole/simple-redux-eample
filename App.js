@@ -1,12 +1,17 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
 
-import MainApp from './screens/mainApp'
+import MainApp from "./screens/mainApp";
+import { mainReducer } from "./store/reducers";
+
+const store = createStore(mainReducer);
 
 export default function App() {
   return (
-    <MainApp />
+    <Provider store={store}>
+      <MainApp />
+    </Provider>
   );
 }
-
-
