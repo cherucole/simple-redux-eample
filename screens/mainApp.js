@@ -5,10 +5,12 @@ import { connect } from "react-redux";
 import { increaseCounter, decreaseCounter } from "../store/actions";
 
 const MainApp = props => {
+  const { counter } = props; //instead of props.counter just destructure it
   return (
     <View style={styles.container}>
       <Button title="Increase" onPress={props.increaseCounter} />
-      <Text>{props.counter}</Text>
+      {/* withount destructuring we would call props.counter, after mapstatetoprops */}
+      <Text>{counter}</Text>
       <Button title="Decrease" onPress={props.decreaseCounter} />
     </View>
   );

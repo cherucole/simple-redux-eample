@@ -6,10 +6,10 @@ const initialState = {
 
 export const mainReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "INCREMENT":
+    case INCREMENT:
       return { ...state, counter: state.counter + 1 };
 
-    case "DECREMENT":
+    case DECREMENT:
       return { ...state, counter: state.counter - 1 };
 
     default:

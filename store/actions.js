@@ -1,7 +1,7 @@
 import { INCREMENT, DECREMENT } from "./types";
 
 export const increaseCounter = () => ({
-  type: INCREMENT
+  type: INCREMENT,
 });
 
 export const decreaseCounter = () => ({
