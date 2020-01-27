@@ -7,10 +7,12 @@ const initialState = {
 export const mainReducer = (state = initialState, action) => {
   switch (action.type) {
     case INCREMENT:
-      return { ...state, counter: state.counter + 1 };
+      console.log("Addition triggered");
+      return { ...state, counter: action.payload + 1 };
 
     case DECREMENT:
-      return { ...state, counter: state.counter - 1 };
+      console.log("Subtraction triggered");
+      return { ...state, counter: action.payload - 1 };
 
     default:
       return state;
