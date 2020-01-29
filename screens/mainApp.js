@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { increaseCounter, decreaseCounter } from "../store/actions";
 
-const MainApp = () => {
+const MainApp = props => {
   const counter = useSelector(state => state.counter);
   const dispatch = useDispatch();
 
